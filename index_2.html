@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FullStack Sustainovate Solutions Ltd | IT Staff Augmentation</title>
+  <meta name="description" content="IT Staff Augmentation specialists providing Data Science, Ruby on Rails, and QA professionals." />
+  <link rel="icon" href="favicon.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { margin: 0; font-family: 'Inter', sans-serif; color: #1f2933; line-height: 1.6; }
+    header { background: #1e3a8a; color: #fff; padding: 1.5rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+    header img { height: 50px; margin-right: 1rem; }
+    nav a { color: #bfdbfe; margin-left: 1rem; text-decoration: none; font-weight: 600; }
+    nav a:hover { color: #fff; }
+    section { padding: 3rem 2rem; max-width: 1100px; margin: auto; }
+    section:not(.hero) { border-top: 1px solid #e2e8f0; }
+    .hero { text-align: center; background: #f8fafc; }
+    .hero img { width: 140px; margin-top: 20px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
+    .card { background: #fff; border-radius: 14px; padding: 1.8rem; border: 1px solid #e2e8f0; transition: 0.3s; cursor: pointer; }
+    .card:hover { transform: translateY(-6px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+    .card img { width: 70px; height: 70px; border-radius: 50%; margin-bottom: 0.8rem; }
+    .badge { display: inline-block; background: #dbeafe; color: #1e3a8a; padding: 4px 10px; border-radius: 999px; font-size: 0.8rem; margin-right: 6px; }
+    button { background: #1e3a8a; color: #fff; border: none; padding: 0.8rem 1.4rem; border-radius: 8px; cursor: pointer; font-weight: 600; }
+    button:hover { background: #1e40af; }
+    .hidden { display: none; }
+    footer { background: #1e3a8a; color: #bfdbfe; text-align: center; padding: 1.5rem; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div style="display:flex; align-items:center;">
+    <img src="logo_full.png" alt="Company Logo" />
+    <h1>FullStack Sustainovate Solutions Ltd</h1>
+  </div>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section class="hero" id="home">
+  <h2>Premium IT Staff Augmentation</h2>
+  <p>Deploy experienced technology professionals on demand.</p>
+  <img src="logo_fs.png" alt="FS Logo" />
+</section>
+
+<section id="projects">
+  <h2>Projects & Experience</h2>
+  <div class="grid">
+    <div class="card" onclick="openDomain('dsml')"><h3>Data Science & ML</h3><p>AI, analytics & machine learning</p></div>
+    <div class="card" onclick="openDomain('ror')"><h3>Ruby on Rails</h3><p>Scalable backend platforms</p></div>
+    <div class="card" onclick="openDomain('qa')"><h3>Software QA</h3><p>Manual & automated testing</p></div>
+  </div>
+</section>
+
+<section id="domain" class="hidden">
+  <h2 id="domainTitle"></h2>
+  <p id="domainDesc"></p>
+  <div class="grid" id="teamGrid"></div>
+  <br />
+  <button onclick="backToProjects()">← Back</button>
+</section>
+
+<section id="contact">
+  <h2>Contact Us</h2>
+  <form action="https://formspree.io/f/yourformid" method="POST">
+    <input type="text" name="name" placeholder="Name" required /><br /><br />
+    <input type="email" name="email" placeholder="Email" required /><br /><br />
+    <textarea name="message" placeholder="Message" required></textarea><br /><br />
+    <button type="submit">Send Message</button>
+  </form>
+</section>
+
+<footer>© 2025 FullStack Sustainovate Solutions Ltd</footer>
+
+<script>
+const domains = {
+  dsml: {
+    title: 'Data Science & Machine Learning Team',
+    desc: 'Experts in AI, NLP, forecasting, and MLOps.',
+    members: [
+      { name: 'Senior Data Scientist', img: 'https://i.pravatar.cc/150?img=12', skills: ['Python','NLP','Forecasting'], exp: '8+ yrs' },
+      { name: 'ML Engineer', img: 'https://i.pravatar.cc/150?img=32', skills: ['TensorFlow','PyTorch','MLOps'], exp: '6+ yrs' }
+    ]
+  },
+  ror: {
+    title: 'Ruby on Rails Development Team',
+    desc: 'High-performance backend engineering specialists.',
+    members: [
+      { name: 'Rails Lead', img: 'https://i.pravatar.cc/150?img=45', skills: ['Ruby','Rails','PostgreSQL'], exp: '9+ yrs' },
+      { name: 'Full Stack Dev', img: 'https://i.pravatar.cc/150?img=18', skills: ['Rails','JS','APIs'], exp: '5+ yrs' }
+    ]
+  },
+  qa: {
+    title: 'Software Quality Assurance Team',
+    desc: 'Ensuring stability, performance, and reliability.',
+    members: [
+      { name: 'QA Analyst', img: 'https://i.pravatar.cc/150?img=27', skills: ['Manual','Test Plans'], exp: '7+ yrs' },
+      { name: 'Automation Engineer', img: 'https://i.pravatar.cc/150?img=52', skills: ['Selenium','Cypress'], exp: '6+ yrs' }
+    ]
+  }
+};
+
+function openDomain(key) {
+  document.getElementById('projects').classList.add('hidden');
+  const d = domains[key];
+  document.getElementById('domainTitle').innerText = d.title;
+  document.getElementById('domainDesc').innerText = d.desc;
+  const grid = document.getElementById('teamGrid');
+  grid.innerHTML = '';
+  d.members.forEach(m => {
+    const div = document.createElement('div');
+    div.className = 'card';
+    div.innerHTML = `<img src="${m.img}"><h3>${m.name}</h3><p>${m.exp}</p>${m.skills.map(s=>`<span class='badge'>${s}</span>`).join('')}<br/><br/><button>Request this Team</button>`;
+    grid.appendChild(div);
+  });
+  document.getElementById('domain').classList.remove('hidden');
+}
+
+function backToProjects() {
+  document.getElementById('domain').classList.add('hidden');
+  document.getElementById('projects').classList.remove('hidden');
+}
+</script>
+
+</body>
+</html>
