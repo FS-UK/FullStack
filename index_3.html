@@ -7,19 +7,24 @@
 <meta name="description" content="IT Staff Augmentation specialists providing Data Science, Ruby on Rails, and QA professionals." />
 <link rel="icon" href="favicon.png" type="image/png" />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
 <style>
 body{margin:0;font-family:Inter,sans-serif;color:#1f2933;line-height:1.6}
 header{background:#1e3a8a;color:#fff;padding:1.5rem 2rem;display:flex;justify-content:space-between;align-items:center}
+header h1{margin: 0;font-size: 1.8rem;}
 header img{height:50px;margin-right:1rem}
 nav a{color:#bfdbfe;margin-left:1rem;text-decoration:none;font-weight:600}
 nav a:hover{color:#fff}
 section{padding:3rem 2rem;max-width:1100px;margin:auto;animation:fade .4s ease}
 section:not(.hero){border-top:1px solid #e2e8f0}
 .hero{text-align:center;background:#f8fafc}
+.hero h2{font-size: 2.2rem;margin-bottom: 1rem;}
+.hero p{font-size: 1.1rem;color: #475569;}
 .hero img{width:140px;margin-top:20px}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.5rem}
 .card{background:#fff;border-radius:14px;padding:1.8rem;border:1px solid #e2e8f0;transition:.3s;cursor:pointer}
 .card:hover{transform:translateY(-6px);box-shadow:0 10px 20px rgba(0,0,0,.1)}
+.card h3{margin-top: 0;color: #1e3a8a;}
 .card img{width:70px;height:70px;border-radius:50%}
 .contact-form {
   max-width: 600px;
@@ -60,6 +65,7 @@ button{background:#1e3a8a;color:#fff;border:none;padding:.7rem 1.3rem;border-rad
 button:hover{background:#1e40af}
 .hidden{display:none}
 footer{background:#1e3a8a;color:#bfdbfe;text-align:center;padding:1.5rem}
+@media (max-width: 768px){.hero h2{font-size: 1.8rem;} nav a{ margin-left: 0.5rem; }}
 @keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1}}
 </style>
 </head>
