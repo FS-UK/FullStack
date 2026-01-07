@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>FullStack Sustainovate Solutions Ltd | IT Staff Augmentation</title>
+<meta name="description" content="IT Staff Augmentation specialists providing Data Science, Ruby on Rails, and QA professionals." />
+<link rel="icon" href="favicon.png" type="image/png" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+body{margin:0;font-family:Inter,sans-serif;color:#1f2933;line-height:1.6}
+header{background:#1e3a8a;color:#fff;padding:1.5rem 2rem;display:flex;justify-content:space-between;align-items:center}
+header img{height:50px;margin-right:1rem}
+nav a{color:#bfdbfe;margin-left:1rem;text-decoration:none;font-weight:600}
+nav a:hover{color:#fff}
+section{padding:3rem 2rem;max-width:1100px;margin:auto;animation:fade .4s ease}
+section:not(.hero){border-top:1px solid #e2e8f0}
+.hero{text-align:center;background:#f8fafc}
+.hero img{width:140px;margin-top:20px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.5rem}
+.card{background:#fff;border-radius:14px;padding:1.8rem;border:1px solid #e2e8f0;transition:.3s;cursor:pointer}
+.card:hover{transform:translateY(-6px);box-shadow:0 10px 20px rgba(0,0,0,.1)}
+.card img{width:70px;height:70px;border-radius:50%}
+.badge{display:inline-block;background:#dbeafe;color:#1e3a8a;padding:4px 10px;border-radius:999px;font-size:.8rem;margin:4px 6px 4px 0}
+button{background:#1e3a8a;color:#fff;border:none;padding:.7rem 1.3rem;border-radius:8px;font-weight:600;cursor:pointer;margin-top:10px}
+button:hover{background:#1e40af}
+.hidden{display:none}
+footer{background:#1e3a8a;color:#bfdbfe;text-align:center;padding:1.5rem}
+@keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1}}
+</style>
+</head>
+<body>
+<header>
+<div style="display:flex;align-items:center">
+<img src="logo_full.png" alt="Logo"/>
+<h1>FullStack Sustainovate Solutions Ltd</h1>
+</div>
+<nav>
+<a href="#home">Home</a>
+<a href="#projects">Projects</a>
+<a href="#contact">Contact</a>
+</nav>
+</header>
+
+<section id="home" class="hero">
+<h2>Enterprise-Grade IT Staff Augmentation</h2>
+<p>On-demand access to experienced technology professionals.</p>
+<img src="logo_fs.png" alt="FS Logo"/>
+</section>
+
+<section id="projects">
+<h2>Projects & Experience</h2>
+<div class="grid">
+<div class="card" onclick="openDomain('dsml')"><h3>Data Science & ML</h3></div>
+<div class="card" onclick="openDomain('ror')"><h3>Ruby on Rails</h3></div>
+<div class="card" onclick="openDomain('qa')"><h3>Software QA</h3></div>
+</div>
+</section>
+
+<section id="domain" class="hidden">
+<h2 id="domainTitle"></h2>
+<p id="domainDesc"></p>
+<div class="grid" id="teamGrid"></div>
+<br><button onclick="goBack()">← Back to Projects</button>
+</section>
+
+<section id="testimonials">
+<h2>Client Testimonials</h2>
+<div class="grid">
+<div class="card"><p>“Exceptional engineers who integrated seamlessly into our team.”</p><strong>UK FinTech Client</strong></div>
+<div class="card"><p>“Reliable, skilled, and delivery-focused professionals.”</p><strong>Retail Technology Partner</strong></div>
+</div>
+</section>
+
+<section id="contact">
+<h2>Contact Us</h2>
+<form action="https://formspree.io/f/yourformid" method="POST">
+<input type="text" name="name" placeholder="Name" required><br><br>
+<input type="email" name="email" placeholder="Email" required><br><br>
+<textarea name="message" placeholder="Message" required></textarea><br><br>
+<button type="submit">Send Message</button>
+</form>
+</section>
+
+<footer>© 2025 FullStack Sustainovate Solutions Ltd</footer>
+
+<script>
+const domains={
+dsml:{title:"Data Science & Machine Learning Team",desc:"AI specialists delivering intelligent solutions.",members:[
+{name:"Senior Data Scientist",img:"https://i.pravatar.cc/150?img=12",skills:["Python","NLP","Forecasting"],exp:"8+ yrs",projects:["Demand Forecasting Platform","Customer Segmentation Engine","NLP Virtual Assistant"]},
+{name:"ML Engineer",img:"https://i.pravatar.cc/150?img=32",skills:["TensorFlow","MLOps"],exp:"6+ yrs",projects:["ML Pipelines","Model Deployment APIs","Scalable Inference Systems"]}
+]},
+ror:{title:"Ruby on Rails Team",desc:"Scalable backend & API experts.",members:[
+{name:"Rails Lead Developer",img:"https://i.pravatar.cc/150?img=45",skills:["Ruby","Rails","PostgreSQL"],exp:"9+ yrs",projects:["E-commerce Platform","Payment Integrations","Admin Dashboards"]}
+]},
+qa:{title:"Quality Assurance Team",desc:"Ensuring reliability & performance.",members:[
+{name:"Automation Engineer",img:"https://i.pravatar.cc/150?img=52",skills:["Selenium","Cypress"],exp:"6+ yrs",projects:["Regression Automation Suite","CI/CD Test Integration","Performance Testing"]}
+]}
+};
+
+function openDomain(key){
+document.getElementById("projects").classList.add("hidden");
+const d=domains[key];
+domainTitle.innerText=d.title;
+domainDesc.innerText=d.desc;
+teamGrid.innerHTML="";
+d.members.forEach(m=>{
+const div=document.createElement("div");
+div.className="card";
+div.innerHTML=`<img src="${m.img}"><h3>${m.name}</h3><p>${m.exp}</p>${m.skills.map(s=>`<span class="badge">${s}</span>`).join("")}<h4>Experience & Contributions</h4><ul>${m.projects.map(p=>`<li>${p}</li>`).join("")}</ul><button onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Request this Team</button>`;
+teamGrid.appendChild(div);
+});
+domain.classList.remove("hidden");
+}
+
+function goBack(){
+domain.classList.add("hidden");
+projects.classList.remove("hidden");
+}
+</script>
+</body>
+</html>
